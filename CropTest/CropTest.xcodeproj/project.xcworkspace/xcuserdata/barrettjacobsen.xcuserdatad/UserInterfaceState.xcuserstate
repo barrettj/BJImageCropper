@@ -2215,9 +2215,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>329945441.54491299</real>
-		<string>{6972, 2691}</string>
-		<string>{8784, 0}</string>
+		<real>329945906.362526</real>
+		<string>{174, 1743}</string>
+		<string>{1093, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -2621,8 +2621,8 @@
 		</dict>
 		<string>IDEDeviceLocation</string>
 		<string>IDEDeviceArchitecture</string>
-		<string>dvtdevice-iphone:3b6844efacc1cc704e2430d6f73c8e5938ef732f</string>
-		<string>armv7f</string>
+		<string>dvtdevice-iphonePlaceholder:placeholder</string>
+		<string>armv7</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -2934,7 +2934,7 @@
 				<integer>268</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>329945415.31824398</real>
+			<real>329945870.96710497</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -2945,7 +2945,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 2:30 PM</string>
+		<string>Today at 2:37 PM</string>
 		<integer>234</integer>
 		<string>CropTest</string>
 		<dict>
@@ -3025,7 +3025,7 @@
 				<integer>275</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/barrettjacobsen/Dropbox/Programming/Cocoa/My%20Projects/BJImageCropper/BJImageCropper/BJImageCropper.h</string>
+		<string>file://localhost/Users/barrettjacobsen/Dropbox/Programming/Cocoa/My%20Projects/BJImageCropper/BJImageCropper/BJImageCropper.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -3043,7 +3043,7 @@
 				<integer>277</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/barrettjacobsen/Dropbox/Programming/Cocoa/My%20Projects/BJImageCropper/BJImageCropper/BJImageCropper.m</string>
+		<string>file://localhost/Users/barrettjacobsen/Dropbox/Programming/Cocoa/My%20Projects/BJImageCropper/BJImageCropper/BJImageCropper.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -4973,7 +4973,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>329945441.5478</real>
+		<real>329945906.36634201</real>
 		<string>{0, 886}</string>
 		<string>{755, 0}</string>
 		<string>BJImageCropper.h</string>
@@ -5264,9 +5264,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>329945441.54767197</real>
-		<string>{6972, 2691}</string>
-		<string>{8784, 0}</string>
+		<real>329945906.366144</real>
+		<string>{174, 1743}</string>
+		<string>{1093, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>

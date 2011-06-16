@@ -35,6 +35,10 @@
         frame.size.width = CGWidth(cropView.superview.frame);
     }
     
+    if (CGWidth(cropView.frame) < 20) {
+        frame.size.width = 20;
+    }
+    
     if (CGOriginX(cropView.frame) + CGWidth(cropView.frame) > CGWidth(cropView.superview.frame)) {
         frame.origin.x = CGWidth(cropView.superview.frame) - CGWidth(cropView.frame);
     }
@@ -45,6 +49,10 @@
     
     if (CGHeight(cropView.frame) > CGHeight(cropView.superview.frame)) {
         frame.size.height = CGHeight(cropView.superview.frame);
+    }
+    
+    if (CGHeight(cropView.frame) < 20) {
+        frame.size.height = 20;
     }
     
     if (CGOriginY(cropView.frame) + CGHeight(cropView.frame) > CGHeight(cropView.superview.frame)) {
@@ -397,8 +405,12 @@
                 CGFloat y = MIN(touch1.y, touch2.y);
                 CGFloat height = MAX(touch1.y, touch2.y) - y;
                 
-                cropView.frame = CGRectMake(CGOriginX(cropView.frame), y, CGWidth(cropView.frame), height);
-            
+                // sometimes the multi touch gets in the way and registers one finger as two quickly
+                // this ensures the crop only shrinks a reasonable amount all at once
+                if (height > 30 || cropView.frame.size.height < 45)
+                {
+                    cropView.frame = CGRectMake(CGOriginX(cropView.frame), y, CGWidth(cropView.frame), height);
+                }
             }
             else if (
                      currentDragView == leftView ||
@@ -407,7 +419,11 @@
                 CGFloat x = MIN(touch1.x, touch2.x);
                 CGFloat width = MAX(touch1.x, touch2.x) - x;
                 
-                cropView.frame = CGRectMake(x, CGOriginY(cropView.frame), width, CGHeight(cropView.frame));
+                // sometimes the multi touch gets in the way and registers one finger as two quickly
+                // this ensures the crop only shrinks a reasonable amount all at once
+                if (width > 30 || cropView.frame.size.width < 45)
+                {                cropView.frame = CGRectMake(x, CGOriginY(cropView.frame), width, CGHeight(cropView.frame));
+                }
             }
         } break;
     }
