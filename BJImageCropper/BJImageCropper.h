@@ -27,11 +27,9 @@
     UIView *bottomRightView;
 
     BOOL isPanning;
-    
+    NSInteger currentTouches;
     CGPoint panTouch;
-    
     CGFloat scaleDistance;
-    
     UIView *currentDragView;
 }
 

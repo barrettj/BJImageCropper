@@ -202,8 +202,10 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self willChangeValueForKey:@"crop"];
     NSSet *allTouches = [event allTouches];
+    
     switch ([allTouches count]) {
         case 1: {            
+            currentTouches = 1;
             isPanning = NO;
             CGFloat insetAmount = IMAGE_CROPPER_INSIDE_STILL_EDGE;
             
@@ -295,8 +297,18 @@
             
             break;
         }
+        case 2: {
+            CGPoint touch1 = [[[allTouches allObjects] objectAtIndex:0] locationInView:self.imageView];
+            CGPoint touch2 = [[[allTouches allObjects] objectAtIndex:1] locationInView:self.imageView];
+
+            if (currentTouches == 0 && CGRectContainsPoint(cropView.frame, touch1) && CGRectContainsPoint(cropView.frame, touch2)) {
+                isPanning = YES;
+            }
+            
+            currentTouches = [allTouches count];
+            break;
+        }
     }
-    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -433,6 +445,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     scaleDistance = 0;
+    currentTouches = [[event allTouches] count];
 }
 
 @end
