@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BJImageCropper : UIImageView {
+#define IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE 40.0f
+#define IMAGE_CROPPER_INSIDE_STILL_EDGE 20.0f
+
+@interface BJImageCropper : UIView {
+    UIImageView *imageView;
+    
     UIView *cropView;
     
     UIView *topView;
@@ -30,6 +35,10 @@
     UIView *currentDragView;
 }
 
-@property (assign) CGRect crop;
+@property (nonatomic, assign) CGRect crop;
+@property (nonatomic, strong) UIImage* image;
+@property (nonatomic, readonly) UIImageView* imageView;
+
+- (id)initWithImage:(UIImage*)newImage;
 
 @end

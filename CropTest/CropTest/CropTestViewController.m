@@ -11,7 +11,7 @@
 
 @implementation CropTestViewController
 @synthesize boundsText;
-@synthesize image;
+@synthesize imageCropper;
 
 - (void)didReceiveMemoryWarning
 {
@@ -22,8 +22,8 @@
 #pragma mark - View lifecycle
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([object isEqual:self.image] && [keyPath isEqualToString:@"crop"]) {
-        self.boundsText.text = [NSString stringWithFormat:@"(%f, %f) (%f, %f)", CGOriginX(self.image.crop), CGOriginY(self.image.crop), CGWidth(self.image.crop), CGHeight(self.image.crop)];
+    if ([object isEqual:self.imageCropper] && [keyPath isEqualToString:@"crop"]) {
+        self.boundsText.text = [NSString stringWithFormat:@"(%f, %f) (%f, %f)", CGOriginX(self.imageCropper.crop), CGOriginY(self.imageCropper.crop), CGWidth(self.imageCropper.crop), CGHeight(self.imageCropper.crop)];
     }
 }
 
@@ -33,19 +33,20 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tactile_noise.png"]];
-    self.image.center = self.view.center;
-    self.image.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.image.layer.shadowRadius = 3.0f;
-    self.image.layer.shadowOpacity = 0.8f;
-    self.image.layer.shadowOffset = CGSizeMake(1, 1);
+    self.imageCropper.image = [UIImage imageNamed:@"gavandme.jpg"];
+    self.imageCropper.center = self.view.center;
+    self.imageCropper.imageView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.imageCropper.imageView.layer.shadowRadius = 3.0f;
+    self.imageCropper.imageView.layer.shadowOpacity = 0.8f;
+    self.imageCropper.imageView.layer.shadowOffset = CGSizeMake(1, 1);
     
-    [self.image addObserver:self forKeyPath:@"crop" options:NSKeyValueObservingOptionNew context:nil];
+    [self.imageCropper addObserver:self forKeyPath:@"crop" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 
 - (void)viewDidUnload
 {
-    [self setImage:nil];
+    [self setImageCropper:nil];
     [self setBoundsText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.

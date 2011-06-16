@@ -10,12 +10,12 @@
 #import "BJImageCropper.h"
 
 @interface CropTestViewController : UIViewController {
-    BJImageCropper *image;
+    BJImageCropper *imageCropper;
     
     UILabel *boundsText;
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *boundsText;
-@property (nonatomic, strong) IBOutlet BJImageCropper *image;
+@property (nonatomic, strong) IBOutlet BJImageCropper *imageCropper;
 
 @end
