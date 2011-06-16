@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B53A35F413AA3E88005F518B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B53A35F313AA3E88005F518B /* UIKit.framework */; };
+		B53A35F613AA3E88005F518B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B53A35F513AA3E88005F518B /* Foundation.framework */; };
+		B53A35F813AA3E88005F518B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B53A35F713AA3E88005F518B /* CoreGraphics.framework */; };
+		B53A35FE13AA3E88005F518B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B53A35FC13AA3E88005F518B /* InfoPlist.strings */; };
+		B53A360013AA3E88005F518B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B53A35FF13AA3E88005F518B /* main.m */; };
+		B53A360413AA3E88005F518B /* CropTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B53A360313AA3E88005F518B /* CropTestAppDelegate.m */; };
+		B53A360613AA3E88005F518B /* CropTestViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = B53A360513AA3E88005F518B /* CropTestViewController.h */; };
+		B53A360813AA3E88005F518B /* CropTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B53A360713AA3E88005F518B /* CropTestViewController.m */; };
+		B53A360B13AA3E88005F518B /* CropTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53A360913AA3E88005F518B /* CropTestViewController.xib */; };
+		B53A361213AA3F0A005F518B /* gav and me.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B53A361113AA3F0A005F518B /* gav and me.jpg */; };
+		B53A361A13AA4814005F518B /* BJImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = B53A361913AA4814005F518B /* BJImageCropper.m */; };
+		B53A361C13AA7BEA005F518B /* tactile_noise.png in Resources */ = {isa = PBXBuildFile; fileRef = B53A361B13AA7BEA005F518B /* tactile_noise.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B53A35EF13AA3E88005F518B /* CropTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CropTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B53A35F313AA3E88005F518B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B53A35F513AA3E88005F518B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B53A35F713AA3E88005F518B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B53A35FB13AA3E88005F518B /* CropTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CropTest-Info.plist"; sourceTree = "<group>"; };
+		B53A35FD13AA3E88005F518B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B53A35FF13AA3E88005F518B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B53A360113AA3E88005F518B /* CropTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CropTest-Prefix.pch"; sourceTree = "<group>"; };
+		B53A360213AA3E88005F518B /* CropTestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CropTestAppDelegate.h; sourceTree = "<group>"; };
+		B53A360313AA3E88005F518B /* CropTestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CropTestAppDelegate.m; sourceTree = "<group>"; };
+		B53A360513AA3E88005F518B /* CropTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CropTestViewController.h; sourceTree = "<group>"; };
+		B53A360713AA3E88005F518B /* CropTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CropTestViewController.m; sourceTree = "<group>"; };
+		B53A360A13AA3E88005F518B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CropTestViewController.xib; sourceTree = "<group>"; };
+		B53A361113AA3F0A005F518B /* gav and me.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "gav and me.jpg"; sourceTree = "<group>"; };
+		B53A361313AA4012005F518B /* BarrettMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrettMacros.h; sourceTree = "<group>"; };
+		B53A361813AA4814005F518B /* BJImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BJImageCropper.h; path = ../../BJImageCropper/BJImageCropper.h; sourceTree = "<group>"; };
+		B53A361913AA4814005F518B /* BJImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BJImageCropper.m; path = ../../BJImageCropper/BJImageCropper.m; sourceTree = "<group>"; };
+		B53A361B13AA7BEA005F518B /* tactile_noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tactile_noise.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B53A35EC13AA3E88005F518B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B53A35F413AA3E88005F518B /* UIKit.framework in Frameworks */,
+				B53A35F613AA3E88005F518B /* Foundation.framework in Frameworks */,
+				B53A35F813AA3E88005F518B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B53A35E413AA3E88005F518B = {
+			isa = PBXGroup;
+			children = (
+				B53A35F913AA3E88005F518B /* CropTest */,
+				B53A35F213AA3E88005F518B /* Frameworks */,
+				B53A35F013AA3E88005F518B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B53A35F013AA3E88005F518B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B53A35EF13AA3E88005F518B /* CropTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B53A35F213AA3E88005F518B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B53A35F313AA3E88005F518B /* UIKit.framework */,
+				B53A35F513AA3E88005F518B /* Foundation.framework */,
+				B53A35F713AA3E88005F518B /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B53A35F913AA3E88005F518B /* CropTest */ = {
+			isa = PBXGroup;
+			children = (
+				B53A360213AA3E88005F518B /* CropTestAppDelegate.h */,
+				B53A360313AA3E88005F518B /* CropTestAppDelegate.m */,
+				B53A360513AA3E88005F518B /* CropTestViewController.h */,
+				B53A360713AA3E88005F518B /* CropTestViewController.m */,
+				B53A360913AA3E88005F518B /* CropTestViewController.xib */,
+				B53A35FA13AA3E88005F518B /* Supporting Files */,
+				B53A361813AA4814005F518B /* BJImageCropper.h */,
+				B53A361913AA4814005F518B /* BJImageCropper.m */,
+			);
+			path = CropTest;
+			sourceTree = "<group>";
+		};
+		B53A35FA13AA3E88005F518B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B53A361113AA3F0A005F518B /* gav and me.jpg */,
+				B53A361B13AA7BEA005F518B /* tactile_noise.png */,
+				B53A361313AA4012005F518B /* BarrettMacros.h */,
+				B53A35FB13AA3E88005F518B /* CropTest-Info.plist */,
+				B53A35FC13AA3E88005F518B /* InfoPlist.strings */,
+				B53A35FF13AA3E88005F518B /* main.m */,
+				B53A360113AA3E88005F518B /* CropTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B53A35EE13AA3E88005F518B /* CropTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B53A360E13AA3E88005F518B /* Build configuration list for PBXNativeTarget "CropTest" */;
+			buildPhases = (
+				B53A35EB13AA3E88005F518B /* Sources */,
+				B53A35EC13AA3E88005F518B /* Frameworks */,
+				B53A35ED13AA3E88005F518B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CropTest;
+			productName = CropTest;
+			productReference = B53A35EF13AA3E88005F518B /* CropTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B53A35E613AA3E88005F518B /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = B53A35E913AA3E88005F518B /* Build configuration list for PBXProject "CropTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B53A35E413AA3E88005F518B;
+			productRefGroup = B53A35F013AA3E88005F518B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B53A35EE13AA3E88005F518B /* CropTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B53A35ED13AA3E88005F518B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B53A35FE13AA3E88005F518B /* InfoPlist.strings in Resources */,
+				B53A360613AA3E88005F518B /* CropTestViewController.h in Resources */,
+				B53A360B13AA3E88005F518B /* CropTestViewController.xib in Resources */,
+				B53A361213AA3F0A005F518B /* gav and me.jpg in Resources */,
+				B53A361C13AA7BEA005F518B /* tactile_noise.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B53A35EB13AA3E88005F518B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B53A360013AA3E88005F518B /* main.m in Sources */,
+				B53A360413AA3E88005F518B /* CropTestAppDelegate.m in Sources */,
+				B53A360813AA3E88005F518B /* CropTestViewController.m in Sources */,
+				B53A361A13AA4814005F518B /* BJImageCropper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B53A35FC13AA3E88005F518B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B53A35FD13AA3E88005F518B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B53A360913AA3E88005F518B /* CropTestViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B53A360A13AA3E88005F518B /* en */,
+			);
+			name = CropTestViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B53A360C13AA3E88005F518B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		B53A360D13AA3E88005F518B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B53A360F13AA3E88005F518B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CropTest/CropTest-Prefix.pch";
+				INFOPLIST_FILE = "CropTest/CropTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B53A361013AA3E88005F518B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CropTest/CropTest-Prefix.pch";
+				INFOPLIST_FILE = "CropTest/CropTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B53A35E913AA3E88005F518B /* Build configuration list for PBXProject "CropTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B53A360C13AA3E88005F518B /* Debug */,
+				B53A360D13AA3E88005F518B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B53A360E13AA3E88005F518B /* Build configuration list for PBXNativeTarget "CropTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B53A360F13AA3E88005F518B /* Debug */,
+				B53A361013AA3E88005F518B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B53A35E613AA3E88005F518B /* Project object */;
+}
