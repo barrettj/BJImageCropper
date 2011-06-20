@@ -26,6 +26,8 @@
     UIView *bottomLeftView;
     UIView *bottomRightView;
 
+    CGFloat imageScale;
+    
     BOOL isPanning;
     NSInteger currentTouches;
     CGPoint panTouch;
@@ -34,9 +36,12 @@
 }
 
 @property (nonatomic, assign) CGRect crop;
+@property (nonatomic, readonly) CGRect unscaledCrop;
 @property (nonatomic, strong) UIImage* image;
 @property (nonatomic, readonly) UIImageView* imageView;
 
 - (id)initWithImage:(UIImage*)newImage;
+- (id)initWithImage:(UIImage*)newImage andMaxSize:(CGSize)maxSize;
 
+- (UIImage*) getCroppedImage;
 @end

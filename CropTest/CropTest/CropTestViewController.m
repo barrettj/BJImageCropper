@@ -12,6 +12,7 @@
 @implementation CropTestViewController
 @synthesize boundsText;
 @synthesize imageCropper;
+@synthesize preview;
 
 - (void)didReceiveMemoryWarning
 {
@@ -21,9 +22,17 @@
 
 #pragma mark - View lifecycle
 
+- (void)updateDisplay {
+    self.boundsText.text = [NSString stringWithFormat:@"(%f, %f) (%f, %f)", CGOriginX(self.imageCropper.crop), CGOriginY(self.imageCropper.crop), CGWidth(self.imageCropper.crop), CGHeight(self.imageCropper.crop)];
+    
+    self.preview.image = [self.imageCropper getCroppedImage];
+    
+    self.preview.frame = CGRectMake(10,10,self.imageCropper.crop.size.width * 0.1, self.imageCropper.crop.size.height * 0.1);
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([object isEqual:self.imageCropper] && [keyPath isEqualToString:@"crop"]) {
-        self.boundsText.text = [NSString stringWithFormat:@"(%f, %f) (%f, %f)", CGOriginX(self.imageCropper.crop), CGOriginY(self.imageCropper.crop), CGWidth(self.imageCropper.crop), CGHeight(self.imageCropper.crop)];
+        [self updateDisplay];
     }
 }
 
@@ -33,7 +42,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tactile_noise.png"]];
-    self.imageCropper.image = [UIImage imageNamed:@"gavandme.jpg"];
+    
+    self.imageCropper = [[BJImageCropper alloc] initWithImage:[UIImage imageNamed:@"gavandme.jpg"] andMaxSize:CGSizeMake(1024, 600)];
+    [self.view addSubview:self.imageCropper];
     self.imageCropper.center = self.view.center;
     self.imageCropper.imageView.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.imageCropper.imageView.layer.shadowRadius = 3.0f;
@@ -41,6 +52,13 @@
     self.imageCropper.imageView.layer.shadowOffset = CGSizeMake(1, 1);
     
     [self.imageCropper addObserver:self forKeyPath:@"crop" options:NSKeyValueObservingOptionNew context:nil];
+    
+    self.preview = [[UIImageView alloc] initWithFrame:CGRectMake(10,10,self.imageCropper.crop.size.width * 0.1, self.imageCropper.crop.size.height * 0.1)];
+    self.preview.image = [self.imageCropper getCroppedImage];
+    self.preview.clipsToBounds = YES;
+    self.preview.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.preview.layer.borderWidth = 2.0;
+    [self.view addSubview:self.preview];
 }
 
 
@@ -62,6 +80,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self updateDisplay];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

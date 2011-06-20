@@ -14,6 +14,7 @@
 @implementation BJImageCropper
 @dynamic crop;
 @dynamic image;
+@dynamic unscaledCrop;
 @synthesize imageView;
 
 - (UIImage*)image {
@@ -97,12 +98,17 @@
         frame.origin.y = 0;
 
     
-    return frame;
+    return CGRectMake(frame.origin.x / imageScale, frame.origin.y / imageScale, frame.size.width / imageScale, frame.size.height / imageScale);;
 }
 
 - (void)setCrop:(CGRect)crop {
-    cropView.frame = crop;
+    cropView.frame = CGRectMake(crop.origin.x * imageScale, crop.origin.y * imageScale, crop.size.width * imageScale, crop.size.height * imageScale);
     [self updateBounds];
+}
+
+- (CGRect)unscaledCrop {
+    CGRect crop = self.crop;
+    return CGRectMake(crop.origin.x * imageScale, crop.origin.y * imageScale, crop.size.width * imageScale, crop.size.height * imageScale);
 }
 
 - (UIView*)makeEdgeView {
@@ -148,9 +154,35 @@
     [self updateBounds];
 }
 
+- (CGRect)calcFrameWithImage:(UIImage*)image andMaxSize:(CGSize)maxSize {
+    CGFloat increase = IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE * 2;
+    
+    // if it already fits, return that
+    CGRect noScale = CGRectMake(0.0, 0.0, image.size.width + increase, image.size.height + increase);
+    if (CGWidth(noScale) <= maxSize.width && CGHeight(noScale) <= maxSize.height) {
+        imageScale = 1.0;
+        return noScale;
+    }
+    
+    CGRect scaled;
+    
+    // first, try scaling the height to fit
+    imageScale = (maxSize.height - increase) / image.size.height;
+    scaled = CGRectMake(0.0, 0.0, image.size.width * imageScale + increase, image.size.height * imageScale + increase);
+    if (CGWidth(scaled) <= maxSize.width && CGHeight(scaled) <= maxSize.height) {
+        return scaled;
+    }
+    
+    // scale with width if that failed
+    imageScale = (maxSize.width - increase) / image.size.width;
+    scaled = CGRectMake(0.0, 0.0, image.size.width * imageScale + increase, image.size.height * imageScale + increase);
+    return scaled;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        imageScale = 1.0;
         imageView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE, IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE)];
         [self addSubview:imageView];
         [self setup];
@@ -162,6 +194,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        imageScale = 1.0;
         imageView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE, IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE)];
         [self addSubview:imageView];
         [self setup];
@@ -173,8 +206,23 @@
 - (id)initWithImage:(UIImage*)newImage {
     self = [super init];
     if (self) {
+        imageScale = 1.0;
         imageView = [[UIImageView alloc] initWithImage:newImage];
         self.frame = CGRectInset(imageView.frame, -IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE, -IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE);
+        [self addSubview:imageView];
+        [self setup];
+    }
+    
+    return self;   
+}
+
+- (id)initWithImage:(UIImage*)newImage andMaxSize:(CGSize)maxSize {
+    self = [super init];
+    if (self) {
+        self.frame = [self calcFrameWithImage:newImage andMaxSize:maxSize];
+        NSLogRect(self.frame);
+        imageView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE, IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE)];
+        imageView.image = newImage;
         [self addSubview:imageView];
         [self setup];
     }
@@ -446,6 +494,30 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     scaleDistance = 0;
     currentTouches = [[event allTouches] count];
+}
+
+- (UIImage*) getCroppedImage {
+    CGRect rect = self.crop;
+    
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // translated rectangle for drawing sub image 
+    CGRect drawRect = CGRectMake(-rect.origin.x, -rect.origin.y, self.image.size.width, self.image.size.height);
+    
+    // clip to the bounds of the image context
+    // not strictly necessary as it will get clipped anyway?
+    CGContextClipToRect(context, CGRectMake(0, 0, rect.size.width, rect.size.height));
+    
+    // draw image
+    [self.image drawInRect:drawRect];
+    
+    // grab image
+    UIImage* croppedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return croppedImage;
 }
 
 @end

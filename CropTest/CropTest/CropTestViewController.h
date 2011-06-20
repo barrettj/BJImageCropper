@@ -16,6 +16,8 @@
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *boundsText;
-@property (nonatomic, strong) IBOutlet BJImageCropper *imageCropper;
+@property (nonatomic, strong) BJImageCropper *imageCropper;
+
+@property (nonatomic, strong) UIImageView *preview;
 
 @end
