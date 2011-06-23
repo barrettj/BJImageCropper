@@ -75,14 +75,14 @@
     CGFloat selfWidth = CGWidth(self.imageView.frame);
     CGFloat selfHeight = CGHeight(self.imageView.frame);
     
-    topView.frame = CGRectMake(x, 0, width, y);
+    topView.frame = CGRectMake(x, -1, width + 1, y);
     bottomView.frame = CGRectMake(x, y + height, width, selfHeight - y - height);
-    leftView.frame = CGRectMake(0, y, x, height);
+    leftView.frame = CGRectMake(-1, y, x + 1, height);
     rightView.frame = CGRectMake(x + width, y, selfWidth - x - width, height);
     
-    topLeftView.frame = CGRectMake(0, 0, x, y);
-    topRightView.frame = CGRectMake(x + width, 0, selfWidth - x - width, y);
-    bottomLeftView.frame = CGRectMake(0, y + height, x, selfHeight - y - height);
+    topLeftView.frame = CGRectMake(-1, -1, x + 1, y + 1);
+    topRightView.frame = CGRectMake(x + width, -1, selfWidth - x - width, y + 1);
+    bottomLeftView.frame = CGRectMake(-1, y + height, x + 1, selfHeight - y - height);
     bottomRightView.frame = CGRectMake(x + width, y + height, selfWidth - x - width, selfHeight - y - height);
     
     [self didChangeValueForKey:@"crop"];    
