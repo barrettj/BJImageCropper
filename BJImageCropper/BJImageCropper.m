@@ -220,7 +220,7 @@
     self = [super init];
     if (self) {
         self.frame = [self calcFrameWithImage:newImage andMaxSize:maxSize];
-        NSLogRect(self.frame);
+        
         imageView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE, IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE)];
         imageView.image = newImage;
         [self addSubview:imageView];
