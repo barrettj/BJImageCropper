@@ -6,6 +6,9 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+// preview slows down frame rate (it's generating a new UIImage very frequently)
+#define SHOW_PREVIEW NO
+
 #import "CropTestViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -24,10 +27,11 @@
 
 - (void)updateDisplay {
     self.boundsText.text = [NSString stringWithFormat:@"(%f, %f) (%f, %f)", CGOriginX(self.imageCropper.crop), CGOriginY(self.imageCropper.crop), CGWidth(self.imageCropper.crop), CGHeight(self.imageCropper.crop)];
-    
-    self.preview.image = [self.imageCropper getCroppedImage];
-    
-    self.preview.frame = CGRectMake(10,10,self.imageCropper.crop.size.width * 0.1, self.imageCropper.crop.size.height * 0.1);
+
+    if (SHOW_PREVIEW) {
+        self.preview.image = [self.imageCropper getCroppedImage];
+        self.preview.frame = CGRectMake(10,10,self.imageCropper.crop.size.width * 0.1, self.imageCropper.crop.size.height * 0.1);
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -53,12 +57,14 @@
     
     [self.imageCropper addObserver:self forKeyPath:@"crop" options:NSKeyValueObservingOptionNew context:nil];
     
-    self.preview = [[UIImageView alloc] initWithFrame:CGRectMake(10,10,self.imageCropper.crop.size.width * 0.1, self.imageCropper.crop.size.height * 0.1)];
-    self.preview.image = [self.imageCropper getCroppedImage];
-    self.preview.clipsToBounds = YES;
-    self.preview.layer.borderColor = [[UIColor whiteColor] CGColor];
-    self.preview.layer.borderWidth = 2.0;
-    [self.view addSubview:self.preview];
+    if (SHOW_PREVIEW) {
+        self.preview = [[UIImageView alloc] initWithFrame:CGRectMake(10,10,self.imageCropper.crop.size.width * 0.1, self.imageCropper.crop.size.height * 0.1)];
+        self.preview.image = [self.imageCropper getCroppedImage];
+        self.preview.clipsToBounds = YES;
+        self.preview.layer.borderColor = [[UIColor whiteColor] CGColor];
+        self.preview.layer.borderWidth = 2.0;
+        [self.view addSubview:self.preview];
+    }
 }
 
 
