@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE 40.0f
+#define IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE 0.0f
 #define IMAGE_CROPPER_INSIDE_STILL_EDGE 20.0f
 
 @interface BJImageCropper : UIView {
@@ -32,16 +32,19 @@
     NSInteger currentTouches;
     CGPoint panTouch;
     CGFloat scaleDistance;
-    UIView *currentDragView;
+    UIView *currentDragView; // Weak reference 
 }
 
 @property (nonatomic, assign) CGRect crop;
 @property (nonatomic, readonly) CGRect unscaledCrop;
-@property (nonatomic, strong) UIImage* image;
+@property (nonatomic, retain) UIImage* image;
 @property (nonatomic, readonly) UIImageView* imageView;
+
++ (UIView*) initialCropView;
 
 - (id)initWithImage:(UIImage*)newImage;
 - (id)initWithImage:(UIImage*)newImage andMaxSize:(CGSize)maxSize;
 
 - (UIImage*) getCroppedImage;
+
 @end
