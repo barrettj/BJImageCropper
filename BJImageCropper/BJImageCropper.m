@@ -111,7 +111,7 @@
     return CGRectMake(crop.origin.x * imageScale, crop.origin.y * imageScale, crop.size.width * imageScale, crop.size.height * imageScale);
 }
 
-- (UIView*)makeEdgeView {
+- (UIView*)newEdgeView {
     UIView *view = [[UIView alloc] init];
     view.backgroundColor = [UIColor blackColor];
     view.alpha = 0.5;
@@ -121,11 +121,30 @@
     return view;
 }
 
-- (UIView*)makeCornerView {
-    UIView *view = [self makeEdgeView];
+- (UIView*)newCornerView {
+    UIView *view = [self newEdgeView];
     view.alpha = 0.75;
     
     return view;
+}
+
++ (UIView *)initialCropView {
+    // EdV: pick a rectangle about half the width of the screen, with aspect
+    // ratio 3:4, centered
+    CGRect screen = [[UIScreen mainScreen] applicationFrame];
+    
+    CGFloat width  = CGWidth(screen) * 0.4;
+    CGFloat height = width * 4 / 3;
+    CGFloat x      = (CGWidth(screen) - width) / 2;
+    CGFloat y      = (CGHeight(screen) - height) / 2;
+    
+    UIView* cropView = [[UIView alloc] initWithFrame:CGRectMake(x, y, width, height)];
+    cropView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    cropView.layer.borderWidth = 2.0;
+    cropView.backgroundColor = [UIColor clearColor];
+    cropView.alpha = 0.4;   
+    
+    return [cropView autorelease];
 }
 
 - (void)setup {
@@ -133,22 +152,17 @@
     self.multipleTouchEnabled = YES;
     self.backgroundColor = [UIColor clearColor];
     
-    cropView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, CGWidth(self.imageView.frame) - 200, CGHeight(self.imageView.frame) - 200)];
-    cropView.layer.borderColor = [[UIColor whiteColor] CGColor];
-    cropView.layer.borderWidth = 2.0;
-    cropView.backgroundColor = [UIColor clearColor];
-    cropView.alpha = 0.4;
-    
+    cropView = [[BJImageCropper initialCropView] retain];
     [self.imageView addSubview:cropView];
 
-    topView = [self makeEdgeView];
-    bottomView = [self makeEdgeView];
-    leftView = [self makeEdgeView];
-    rightView = [self makeEdgeView];
-    topLeftView = [self makeCornerView];
-    topRightView = [self makeCornerView];
-    bottomLeftView = [self makeCornerView];
-    bottomRightView = [self makeCornerView];
+    topView = [self newEdgeView];
+    bottomView = [self newEdgeView];
+    leftView = [self newEdgeView];
+    rightView = [self newEdgeView];
+    topLeftView = [self newCornerView];
+    topRightView = [self newCornerView];
+    bottomLeftView = [self newCornerView];
+    bottomRightView = [self newCornerView];
    
     
     [self updateBounds];
@@ -518,6 +532,24 @@
     UIGraphicsEndImageContext();
     
     return croppedImage;
+}
+
+- (void) dealloc {
+    [imageView release];
+    
+    [cropView release];
+    
+    [topView release];
+    [bottomView release];
+    [leftView release];
+    [rightView release];
+    
+    [topLeftView release];
+    [topRightView release];
+    [bottomLeftView release];
+    [bottomRightView release];
+    
+    [super dealloc];
 }
 
 @end
