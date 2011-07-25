@@ -159,6 +159,17 @@
     cropView = [BJImageCropper initialCropView];
     [self.imageView addSubview:cropView];
 
+    // sanity check for initial crop size
+    if (
+        cropView.frame.size.width > self.imageView.frame.size.width ||
+        cropView.frame.size.height > self.imageView.frame.size.height) {
+        
+        CGFloat smallest = MIN(self.imageView.frame.size.width, self.imageView.frame.size.height);
+        CGFloat adjust = smallest / 4;
+        
+        cropView.frame = CGRectMake(adjust, adjust, self.imageView.frame.size.width - adjust * 2, self.imageView.frame.size.height - adjust * 2);
+    }
+    
     topView = [self newEdgeView];
     bottomView = [self newEdgeView];
     leftView = [self newEdgeView];
