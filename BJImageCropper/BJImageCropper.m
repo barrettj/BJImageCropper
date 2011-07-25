@@ -144,15 +144,19 @@
     cropView.backgroundColor = [UIColor clearColor];
     cropView.alpha = 0.4;   
     
+#ifdef ARC
+    return cropView;
+#else
     return [cropView autorelease];
+#endif
 }
 
 - (void)setup {
     self.userInteractionEnabled = YES;
     self.multipleTouchEnabled = YES;
     self.backgroundColor = [UIColor clearColor];
-    
-    cropView = [[BJImageCropper initialCropView] retain];
+
+    cropView = [BJImageCropper initialCropView];
     [self.imageView addSubview:cropView];
 
     topView = [self newEdgeView];
@@ -164,6 +168,9 @@
     bottomLeftView = [self newCornerView];
     bottomRightView = [self newCornerView];
    
+#ifndef ARC
+    [cropView retain];
+#endif
     
     [self updateBounds];
 }
@@ -534,6 +541,8 @@
     return croppedImage;
 }
 
+#ifndef ARC
+
 - (void) dealloc {
     [imageView release];
     
@@ -551,5 +560,5 @@
     
     [super dealloc];
 }
-
+#endif
 @end

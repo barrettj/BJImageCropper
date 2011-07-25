@@ -8,8 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-#define IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE 0.0f
+#define IMAGE_CROPPER_OUTSIDE_STILL_TOUCHABLE 40.0f
 #define IMAGE_CROPPER_INSIDE_STILL_EDGE 20.0f
+
+#ifndef __has_feature
+// not LLVM Compiler
+#define __has_feature(x) 0
+#endif
+
+#if __has_feature(objc_arc)
+#define ARC
+#endif
 
 @interface BJImageCropper : UIView {
     UIImageView *imageView;
