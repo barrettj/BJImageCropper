@@ -47,7 +47,7 @@
 @property (nonatomic, assign) CGRect crop;
 @property (nonatomic, readonly) CGRect unscaledCrop;
 @property (nonatomic, retain) UIImage* image;
-@property (nonatomic, readonly) UIImageView* imageView;
+@property (nonatomic, retain, readonly) UIImageView* imageView;
 
 + (UIView*) initialCropView;
 
