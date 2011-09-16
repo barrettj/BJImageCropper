@@ -28,38 +28,54 @@
 - (void)constrainCropToImage {
     CGRect frame = cropView.frame;
     
-    if (CGOriginX(cropView.frame) < 0) {
-        frame.origin.x = 0;
-    }
+    if (CGRectEqualToRect(frame, CGRectZero)) return;
     
-    if (CGWidth(cropView.frame) > CGWidth(cropView.superview.frame)) {
-        frame.size.width = CGWidth(cropView.superview.frame);
-    }
+    BOOL change = NO;
     
-    if (CGWidth(cropView.frame) < 20) {
-        frame.size.width = 20;
-    }
-    
-    if (CGOriginX(cropView.frame) + CGWidth(cropView.frame) > CGWidth(cropView.superview.frame)) {
-        frame.origin.x = CGWidth(cropView.superview.frame) - CGWidth(cropView.frame);
-    }
-    
-    if (CGOriginY(cropView.frame) < 0) {
-        frame.origin.y = 0;
-    }
-    
-    if (CGHeight(cropView.frame) > CGHeight(cropView.superview.frame)) {
-        frame.size.height = CGHeight(cropView.superview.frame);
-    }
-    
-    if (CGHeight(cropView.frame) < 20) {
-        frame.size.height = 20;
-    }
-    
-    if (CGOriginY(cropView.frame) + CGHeight(cropView.frame) > CGHeight(cropView.superview.frame)) {
-        frame.origin.y = CGHeight(cropView.superview.frame) - CGHeight(cropView.frame);
-    }
-    
+    do {
+        change = NO;
+        
+        if (CGOriginX(frame) < 0) {
+            frame.origin.x = 0;
+            change = YES;
+        }
+        
+        if (CGWidth(frame) > CGWidth(cropView.superview.frame)) {
+            frame.size.width = CGWidth(cropView.superview.frame);
+            change = YES;
+        }
+        
+        if (CGWidth(frame) < 20) {
+            frame.size.width = 20;
+            change = YES;
+        }
+        
+        if (CGOriginX(frame) + CGWidth(frame) > CGWidth(cropView.superview.frame)) {
+            frame.origin.x = CGWidth(cropView.superview.frame) - CGWidth(frame);
+            change = YES;
+        }
+        
+        if (CGOriginY(frame) < 0) {
+            frame.origin.y = 0;
+            change = YES;
+        }
+        
+        if (CGHeight(frame) > CGHeight(cropView.superview.frame)) {
+            frame.size.height = CGHeight(cropView.superview.frame);
+            change = YES;
+        }
+        
+        if (CGHeight(frame) < 20) {
+            frame.size.height = 20;
+            change = YES;
+        }
+        
+        if (CGOriginY(frame) + CGHeight(frame) > CGHeight(cropView.superview.frame)) {
+            frame.origin.y = CGHeight(cropView.superview.frame) - CGHeight(frame);
+            change = YES;
+        }
+    } while (change);
+        
     cropView.frame = frame;
 }
 
@@ -398,7 +414,7 @@
                                 
                 panTouch = touchCurrent;
             }
-            else if ((CGRectContainsPoint(self.imageView.bounds, touch))) {
+            else if ((CGRectContainsPoint(self.bounds, touch))) {
                 CGRect frame = cropView.frame;
                 CGFloat x = touch.x;
                 CGFloat y = touch.y;
@@ -408,7 +424,7 @@
                     frame.origin.y = y;
                 }
                 else if (currentDragView == bottomView) {
-                    currentDragView = bottomView;
+                    //currentDragView = bottomView;
                     frame.size.height = y - CGOriginY(frame);
                 }
                 else if (currentDragView == leftView) {
@@ -416,7 +432,7 @@
                     frame.origin.x = x;
                 }
                 else if (currentDragView == rightView) {
-                    currentDragView = rightView;
+                    //currentDragView = rightView;
                     frame.size.width = x - CGOriginX(frame);
                 }
                 else if (currentDragView == topLeftView) {
