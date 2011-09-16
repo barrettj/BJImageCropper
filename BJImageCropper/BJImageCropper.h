@@ -49,7 +49,7 @@
 @property (nonatomic, retain) UIImage* image;
 @property (nonatomic, retain, readonly) UIImageView* imageView;
 
-+ (UIView*) initialCropView;
++ (UIView *)initialCropViewForImageView:(UIImageView*)imageView;
 
 - (id)initWithImage:(UIImage*)newImage;
 - (id)initWithImage:(UIImage*)newImage andMaxSize:(CGSize)maxSize;

@@ -128,15 +128,15 @@
     return view;
 }
 
-+ (UIView *)initialCropView {
-    // EdV: pick a rectangle about half the width of the screen, with aspect
-    // ratio 3:4, centered
-    CGRect screen = [[UIScreen mainScreen] applicationFrame];
++ (UIView *)initialCropViewForImageView:(UIImageView*)imageView {
+    // 3/4 the size, centered
     
-    CGFloat width  = CGWidth(screen) * 0.4;
-    CGFloat height = width * 4 / 3;
-    CGFloat x      = (CGWidth(screen) - width) / 2;
-    CGFloat y      = (CGHeight(screen) - height) / 2;
+    CGRect max = imageView.bounds;
+
+    CGFloat width  = CGWidth(max) / 4 * 3;
+    CGFloat height = CGHeight(max) / 4 * 3;
+    CGFloat x      = (CGWidth(max) - width) / 2;
+    CGFloat y      = (CGHeight(max) - height) / 2;
     
     UIView* cropView = [[UIView alloc] initWithFrame:CGRectMake(x, y, width, height)];
     cropView.layer.borderColor = [[UIColor whiteColor] CGColor];
@@ -156,19 +156,8 @@
     self.multipleTouchEnabled = YES;
     self.backgroundColor = [UIColor clearColor];
 
-    cropView = [BJImageCropper initialCropView];
+    cropView = [BJImageCropper initialCropViewForImageView:imageView];
     [self.imageView addSubview:cropView];
-
-    // sanity check for initial crop size
-    if (
-        cropView.frame.size.width > self.imageView.frame.size.width ||
-        cropView.frame.size.height > self.imageView.frame.size.height) {
-        
-        CGFloat smallest = MIN(self.imageView.frame.size.width, self.imageView.frame.size.height);
-        CGFloat adjust = smallest / 4;
-        
-        cropView.frame = CGRectMake(adjust, adjust, self.imageView.frame.size.width - adjust * 2, self.imageView.frame.size.height - adjust * 2);
-    }
     
     topView = [self newEdgeView];
     bottomView = [self newEdgeView];
