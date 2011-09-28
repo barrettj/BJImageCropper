@@ -559,7 +559,7 @@
 
 #ifndef ARC
 
-- (void) dealloc {
+- (void)dealloc {
     [imageView release];
     
     [cropView release];
