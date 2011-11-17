@@ -1,3 +1,6 @@
+![](https://github.com/barrettj/BJImageCropper/blob/master/SS.png?raw=true) 
+
+A simple UIView subclass that allows a user to crop an image. If you use it, I'd love to know! Twitter: @barrettjacobsen
 
 Copyright (c) 2011 Barrett Jacobsen
 

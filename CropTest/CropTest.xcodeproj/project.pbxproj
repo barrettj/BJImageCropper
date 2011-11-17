@@ -137,6 +137,9 @@
 /* Begin PBXProject section */
 		B53A35E613AA3E88005F518B /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = B53A35E913AA3E88005F518B /* Build configuration list for PBXProject "CropTest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -257,6 +260,7 @@
 				GCC_PREFIX_HEADER = "CropTest/CropTest-Prefix.pch";
 				INFOPLIST_FILE = "CropTest/CropTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -268,6 +272,7 @@
 				GCC_PREFIX_HEADER = "CropTest/CropTest-Prefix.pch";
 				INFOPLIST_FILE = "CropTest/CropTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
