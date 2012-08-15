@@ -419,6 +419,13 @@
                 CGFloat x = touch.x;
                 CGFloat y = touch.y;
                 
+                if (x > self.imageView.frame.size.width)
+                    x = self.imageView.frame.size.width;
+
+                if (y > self.imageView.frame.size.height)
+                    y = self.imageView.frame.size.height;
+
+                
                 if (currentDragView == topView) {
                     frame.size.height += CGOriginY(frame) - y;
                     frame.origin.y = y;
