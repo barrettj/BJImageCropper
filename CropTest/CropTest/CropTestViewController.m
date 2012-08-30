@@ -12,6 +12,23 @@
 #import "CropTestViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+#ifndef CGWidth
+#define CGWidth(rect)                   rect.size.width
+#endif
+
+#ifndef CGHeight
+#define CGHeight(rect)                  rect.size.height
+#endif
+
+#ifndef CGOriginX
+#define CGOriginX(rect)                 rect.origin.x
+#endif
+
+#ifndef CGOriginY
+#define CGOriginY(rect)                 rect.origin.y
+#endif
+
+
 @implementation CropTestViewController
 @synthesize boundsText;
 @synthesize imageCropper;
