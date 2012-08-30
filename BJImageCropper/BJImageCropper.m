@@ -7,9 +7,7 @@
 //
 
 #import "BJImageCropper.h"
-#import "BarrettMacros.h"
 #import <QuartzCore/QuartzCore.h>
-
 
 @implementation BJImageCropper
 @dynamic crop;

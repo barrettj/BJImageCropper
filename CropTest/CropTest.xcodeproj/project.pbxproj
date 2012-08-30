@@ -36,7 +36,6 @@
 		B53A360713AA3E88005F518B /* CropTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CropTestViewController.m; sourceTree = "<group>"; };
 		B53A360A13AA3E88005F518B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CropTestViewController.xib; sourceTree = "<group>"; };
 		B53A361113AA3F0A005F518B /* gavandme.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gavandme.jpg; sourceTree = "<group>"; };
-		B53A361313AA4012005F518B /* BarrettMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrettMacros.h; sourceTree = "<group>"; };
 		B53A361813AA4814005F518B /* BJImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BJImageCropper.h; path = ../../BJImageCropper/BJImageCropper.h; sourceTree = "<group>"; };
 		B53A361913AA4814005F518B /* BJImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BJImageCropper.m; path = ../../BJImageCropper/BJImageCropper.m; sourceTree = "<group>"; };
 		B53A361B13AA7BEA005F518B /* tactile_noise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tactile_noise.png; sourceTree = "<group>"; };
@@ -103,7 +102,6 @@
 			children = (
 				B53A361113AA3F0A005F518B /* gavandme.jpg */,
 				B53A361B13AA7BEA005F518B /* tactile_noise.png */,
-				B53A361313AA4012005F518B /* BarrettMacros.h */,
 				B53A35FB13AA3E88005F518B /* CropTest-Info.plist */,
 				B53A35FC13AA3E88005F518B /* InfoPlist.strings */,
 				B53A35FF13AA3E88005F518B /* main.m */,

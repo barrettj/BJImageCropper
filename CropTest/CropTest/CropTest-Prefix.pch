@@ -12,6 +12,3 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
-
-
-#import "BarrettMacros.h"
