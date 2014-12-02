@@ -64,7 +64,7 @@
             change = YES;
         }
         
-        if (CGOriginX(frame) + CGWidth(frame) > CGWidth(cropView.superview.frame)) {
+        if (CGOriginX(frame) + CGWidth(frame) - CGWidth(cropView.superview.frame) > 0.01) {
             frame.origin.x = CGWidth(cropView.superview.frame) - CGWidth(frame);
             change = YES;
         }
